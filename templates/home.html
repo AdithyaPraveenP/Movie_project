@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Home </title>
+{% endblock %}
+{% block body %}
+<a href="{% url 'authapp:logout' %}">Logout</a> <br>
+<a href="{% url 'authapp:login' %}">Login</a>
+
+
+{% endblock %}

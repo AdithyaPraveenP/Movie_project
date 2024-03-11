@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Edit Comment </title>
+{% endblock %}
+{% block body %}
+<h1 class="max-w-sm mx-auto" >Edit Comment</h1>
+
+<form method="POST"  action="{% url 'authapp:edit_comment' comment.id %}" class="max-w-sm mx-auto" >
+    {% csrf_token %}
+    <div class="mb-5">
+        <label for="comment">Comment:</label><br>
+        <textarea id="comment" name="comment" rows="4" cols="50">{{ comment.text }}</textarea>
+    </div>
+    <div class="mb-5">
+        <label for="rating">Rating:</label><br>
+        <input type="number" id="rating" name="rating" min="1" max="5" value="{{ comment.rating }}">
+    </div>
+    <input type="hidden" name="movie_id" value="{{ comment.movie_id }}">
+
+    <button type="submit" class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded"> Submit </button>
+
+</form>
+
+{% endblock %}

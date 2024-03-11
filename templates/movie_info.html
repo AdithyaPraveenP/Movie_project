@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Movie Detail</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="bg-gray-900 text-white">
+
+    <div class="container mx-auto flex flex-col md:flex-row p-4">
+
+        <!-- Movie Image -->
+        <div class="md:w-1/2">
+            <img src="{{ movies.cover.url }}" alt="Movie Poster" class="w-full">
+        </div>
+
+        <!-- Movie Details -->
+        <div class="md:w-1/2 md:ml-4">
+            <h1 class="text-3xl font-bold mt-4 md:mt-0">{{ movies.title }}</h1>
+            <p class="text-gray-400">{{ movies.release }}</p>
+            <p class="mt-4">{{ movies.description }}</p>
+            <p class="mt-4">Total Hours: {{ movies.movie_length }}Hrs</p>
+            <p class="mt-4">{{ movies.genre }}</p>
+            <a class="mt-4" href="{{ movies.url }}" class="mt-4">Trailer</a>
+            <p class="mt-4">Actors: {{ movies.actor }}</p>
+
+            <!-- Comment Section -->
+            <div class="mt-auto">
+                <h2 class="text-xl font-bold">Comments</h2>
+                {% for comment in comments %}
+                    <div class="mt-4">
+                        <div class="flex items-start">
+                            <div class="bg-gray-800 p-4 rounded-lg mr-4">
+                                <p class="text-gray-400">{{ comment.user.username }}</p>
+                                <p class="mt-2">Comment: {{ comment.text }}</p>
+                                <p class="text-gray-400">Rating: {{ comment.rating }}</p>
+                                <p class="text-gray-400">Posted at: {{ comment.created_at|date:"Y-m-d H:i:s" }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p>No comments yet.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Comment Form -->
+    {% if user.is_authenticated %}
+        <div class="p-4 grid rounded-lg mt-8">
+            <form action="" method="POST" class="mt-5">
+                {% csrf_token %}
+                <label for="comment" class="block mb-2">Add Your Comment:</label>
+                <textarea name="comment" id="comment" rows="3" class="w-full bg-gray-800 p-2 rounded"></textarea>
+
+                <label for="rating" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select your rating</label>
+                <select id="rating" name="rating" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+
+                <button type="submit" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600">Submit</button>
+            </form>
+        </div>
+    {% else %}
+        <p>You must be logged in to add a comment.</p>
+        <a href="{% url 'authapp:login' %}">Login</a>
+    {% endif %}
+
+</div>
+
+{% endblock %}

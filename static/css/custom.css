@@ -1,0 +1,24 @@
+{% load static %}
+
+.background{
+    background: url("/static/images/addmovie.jpg");
+    background-size: cover;
+     min-height: 100vh;
+     background-repeat: repeat-x;
+
+
+}
+
+
+.moviecard{
+
+        margin-top:50%;
+}
+
+
+.username{
+        padding-left:10px;
+        padding-top:12px;
+        padding-right:10px;
+        color:white;
+}

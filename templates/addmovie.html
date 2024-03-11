@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Home </title>
+
+{% endblock %}
+{% block body %}
+
+<div class="background">
+
+
+
+
+
+
+<div class="backdrop-blur-md overflow-x-auto  h-screen  bg-gradient-to-b ">
+<form class="max-w-md mx-auto" method="POST" enctype="multipart/form-data" action="">
+    {% csrf_token %}
+
+
+
+
+
+
+
+
+
+    <br>
+    <h1 style="color:white; text-align:center; font-size:25px;"><b> Add Movies</b> </h1>
+
+  <div class="flex">
+    <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+      <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+
+      </svg>
+    </span>
+    <input  name="title"  type="text" id="website-admin" class="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Movie Title">
+  </div>
+  <div class="mb-5">
+    <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Release Date</label>
+    <input name="release" type="datetime-local" id="date" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="name@flowbite.com" required />
+  </div>
+ <div class="mb-5">
+  <label for="descritpion" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+  <input type="text" name="description" id="descritpion"  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter description">
+  </div>
+   <div class="mb-5" >
+  <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Movie Length</label>
+  <input type="text" name="movie_length" id="message"  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Movie Length">
+  </div>
+    <div class="mb-5" >
+  <label for="url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Trailer URL</label>
+  <input type="text" name="url" id="url"  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Trailer Url">
+  </div>
+    <div class="mb-5" >
+  <label for="actors" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Actors</label>
+  <input type="text" name="actor" id="actors"  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter the actors">
+  </div>
+
+    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="user_avatar">Upload Cover</label>
+  <input  name="cover" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="user_avatar_help" id="user_avatar" type="file">
+  <div class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="user_avatar_help">
+  </div>
+
+    <label for="genre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select genre</label>
+  <select id="genre" name="genre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+    <option>Action</option>
+    <option>Comedy</option>
+    <option>Romantic</option>
+    <option>Adventure</option>
+      <option>Mystery</option>
+      <option>Sci Fi</option>
+
+  </select>
+  <div class="mb-5" >
+  <label for="rating" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rating</label>
+  <input type="text" name="rating" id="actors"  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter the rating">
+  </div>
+
+
+
+
+    <div class="text-center" style="margin-top:30px;">
+  <button type="submit" style="justify-content:center;" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 content-center">Submit</button>
+        </div>
+
+</form>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
